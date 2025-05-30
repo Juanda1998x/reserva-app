@@ -1,0 +1,98 @@
+.AddProductContainer {
+
+    background-color: #e6e8eb;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px #070606;
+    width: 60%;
+    height: auto;
+    display: block
+    
+
+}
+.AddProductForm{
+    position: relative;
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #1d4c7e;
+}
+
+input[type="text"],
+input[type="file"]
+{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    border-radius: 5px;
+
+}
+input:focus{
+    outline: none;
+    border: 1px solid #1d4c7e;
+    box-shadow: 0 0 5px #3f78b3;
+}
+.error{
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.btn-guardar {
+    background-color: #1d4c7e;
+    box-shadow: 1px 1px 10px #070606;
+    cursor: pointer;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    width: 100%;
+    transition: .5s ease;
+}
+.btn-guardar:hover {
+    background-color: #3f78b3;
+}
+.volver {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    font: inherit;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 8px 12px;
+}
+
+.btn-regresar:hover {
+    background-color: #3f78b3;
+}
+
+input[type="file"] {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #fff;
+
+}
+h1 {
+    text-align: center;
+    color: #1d4c7e;
+    font-family: Montserrat;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+label {
+    font-size: 1.2rem;
+    color: #1d4c7e;
+    font-family: Montserrat;
+    margin-bottom: 5px;
+}

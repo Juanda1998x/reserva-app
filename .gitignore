@@ -1,0 +1,34 @@
+# === Node.js / React ===
+node_modules/
+build/
+.env
+*.log
+
+# === Java / Spring Boot ===
+target/
+*.class
+*.jar
+*.war
+*.iml
+*.log
+*.h2.db
+
+# === Maven / Gradle ===
+.mvn/
+.gradle/
+build/
+
+# === IntelliJ IDEA ===
+.idea/
+*.iws
+*.ipr
+
+# === VS Code ===
+.vscode/
+
+# === Sistema operativo ===
+.DS_Store
+Thumbs.db
+
+# === Otros ===
+logs/

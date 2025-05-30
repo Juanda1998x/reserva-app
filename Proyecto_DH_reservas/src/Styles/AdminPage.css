@@ -1,0 +1,72 @@
+.admin-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f8f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.admin-function-btn{
+    padding: 1.5rem 2rem;
+    background-color: #1d4c7e;
+    border: 2px solid #1d4c7e;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;  
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+.admin-function-btn:hover {
+    background-color: #3f78b3;
+    border-color: #3f78b3;
+    transform: translateY(-3px);
+}
+
+.mobile-error {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    background-color: #ffebee;
+    border-radius: 8px;
+    margin: 2rem 0;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column; 
+    padding: 1rem;
+    align-items: center;
+    
+}
+.mobile-error h2 {
+    color: #c62828;
+    padding: 5px 8px;
+    margin-bottom: 1rem;
+}
+
+.mobile-error button {
+    padding: 0.5rem 1rem;
+    background-color: #c62828;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.mobile-error button:hover {
+    transform: translateY(-2px);
+    background-color: #b71c1c;
+}

@@ -1,0 +1,10 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* mantiene ancho y alto a pesar de pading y border*/
+    font-family: monospace;
+    list-style: none; /* quita las vinetas de las listas */
+    text-decoration: none;/* quita los subrayados de los enlaces */
+    color: rgb(25, 25, 25);
+
+}

@@ -1,0 +1,18 @@
+.content {
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #3f78b3;
+  margin-top: 70px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.main-layouth {
+  padding: 20px;
+  width: 90%;
+  margin: auto;
+}
