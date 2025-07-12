@@ -1,12 +1,15 @@
 import '../Styles/header.css';
 import { NavLink } from "react-router"
-import React, { useState } from 'react';
+import React, { use, useContext, useState } from 'react';
+import { UserInfo } from './UserInfo';
+import { UserContext } from '../Context/UserContext';
 export const Header = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+    const { user } = useContext(UserContext);
     return (
 
         <header className="header">
@@ -29,7 +32,7 @@ export const Header = () => {
 
             <div className={`header-right${isMenuOpen ? 'open' : ''}`}>
                 <NavLink
-                    to={'/crear_cuenta'}
+                    to={'/auth/register'}
                     className="nav-link "
                     aria-current="page"
                     onClick={() => setIsMenuOpen(false)}>
@@ -39,7 +42,7 @@ export const Header = () => {
                     </button>
                 </NavLink>
                 <NavLink
-                    to={'/login'}
+                    to={'/auth/login'}
                     className="nav-link "
                     aria-current="page"
                     onClick={() => setIsMenuOpen(false)}>
@@ -48,7 +51,7 @@ export const Header = () => {
                         Iniciar sesión
                     </button>
                 </NavLink>
-                <NavLink
+                {user && <NavLink
                     to={'/admin'}
                     className="nav-link "
                     aria-current="page"
@@ -57,7 +60,12 @@ export const Header = () => {
                         className='btn'>
                         panel administrador
                     </button>
+
                 </NavLink>
+                }
+               {user &&
+                    <UserInfo />
+                }
 
             </div>
 

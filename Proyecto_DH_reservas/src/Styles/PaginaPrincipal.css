@@ -11,6 +11,20 @@
     transition: border-color 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+.btn-delete-filter{
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    &:hover {
+        background-color: #c82333;
+    }
+}
 .search:focus {
     border-color: #4caf50;
     box-shadow: 0 2px 5px rgba(76, 175, 80, 0.2);
@@ -20,18 +34,26 @@
     font-style: italic;
 }
 
+.container section{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
 
 .container {
     display: flex;
     width: 100%;
     flex-direction: column;
-    padding: 20px;
+    padding: clamp(1rem, 2vw, 2rem);
     border-radius: 10px; 
+    gap : 20px;
 }
-h2 {
+.container h2 {
     width: 100%;
-    text-align: center;
-    color: #222222;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    text-align: left;
+    color: #1d4c7e;
+    font-size: clamp(1.5rem, 2vw, 2.3rem);
+    
 }

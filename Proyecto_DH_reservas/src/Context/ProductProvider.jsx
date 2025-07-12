@@ -5,7 +5,7 @@ import { ProductContext } from './ProductContext';
 export const ProductProvider = ({ children }) => {
 
     // productos aleatorios
-    const randomUrl = 'http://localhost:8080/product'
+    const randomUrl = 'http://localhost:8080/product/random'
     const { data: randomProducts, isLoading, error, fetchData } = useFetch();
 
     // productos paginados

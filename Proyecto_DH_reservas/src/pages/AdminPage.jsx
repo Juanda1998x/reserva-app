@@ -19,8 +19,7 @@ export const AdminPage = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }
-        , []);
+    }, []);
 
     if (isMobile) {
         // Si es móvil, redirige a la página principal
@@ -41,9 +40,9 @@ export const AdminPage = () => {
 
     const adminFunctions = [
         { name: 'Agregar Producto', path: '/admin/agregar-producto' },
-        { name: 'Editar Producto', path: '/admin/editar-producto' },
+        { name: 'Agregar categoria', path: '/admin/agregar-categoria' },
         { name: 'Ver Productos', path: '/admin/ver-productos' },
-        { name: 'Ver Pedidos', path: '/admin/ver-pedidos' },
+        { name: 'Administrar Caracteristica', path: '/admin/listar-caracteristica' },
         { name: 'Ver Usuarios', path: '/admin/ver-usuarios' }
     ]
 
@@ -51,8 +50,16 @@ export const AdminPage = () => {
     return (
         <div className='admin-container'>
 
+            <div className="admin-title">
+                <h1>Panel de adiministracion</h1>
+                <button
+                    className="admin-back-button"
+                    onClick={() => navigate("/")}
+                >
+                    X
+                </button>
 
-            <h1>Panel de Administración</h1>
+            </div>
             <div className='admin-grid'>
                 {adminFunctions.map((funcion) => (
                     <button

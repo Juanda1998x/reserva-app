@@ -1,0 +1,64 @@
+.edit-product-container{
+    width: 90%;
+    display: block;
+    gap: 1rem;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.edit-product-container h2{
+    color: blue;
+    text-align: center;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    margin-bottom: 1.5rem;
+}
+.edit-product-container h4{
+    color: rgb(123, 22, 32);
+    text-align: center;
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+    margin-bottom: 1rem;
+    
+}
+.edit-product-container p{
+    color: rgb(123, 22, 32);
+    text-align: center;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    margin-bottom: 1.5rem;
+}
+.edit-product-container label{
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: rgb(123, 22, 32);
+}
+.edit-product-container select{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    margin-bottom: 1rem;
+    &:focus{
+        outline: none;
+        border-color: blue;
+        box-shadow: 0 0 5px rgba(0, 0, 255, 0.2);
+    }
+}
+.edit-product-container button{
+    width: 100%;
+    padding: 0.75rem;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover{
+        background-color: darkblue;
+    }
+}

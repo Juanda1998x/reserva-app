@@ -11,6 +11,7 @@ export const ProductList = () => {
 
     useEffect(() => {
         fetchData('http://localhost:8080/product/all', 'GET');
+        
     }, []);
 
     const [productToDelete, setProductToDelete] = useState(null);
@@ -27,8 +28,7 @@ export const ProductList = () => {
 
         try {
             await fetchData(`http://localhost:8080/product/${productToDelete}`, 'DELETE');
-            const updateProducts = await
-                fetchData('http://localhost:8080/product/all', 'GET'); // recarga los product list
+            const updateProducts = await fetchData('http://localhost:8080/product/all', 'GET'); // recarga los product list
 
             setShowConfirm(false);
 
@@ -47,9 +47,9 @@ export const ProductList = () => {
                 <h1>Lista de Productos</h1>
                 <button
                     className="back-button"
-                    onClick={() => navigate(-1)}
+                    onClick={() => navigate("/admin")}
                 >
-                    Volver
+                    X
                 </button>
 
             </div>
@@ -59,6 +59,7 @@ export const ProductList = () => {
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
+                        <th scope="col">categoria</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -70,8 +71,9 @@ export const ProductList = () => {
                                 <tr key={product.id}>
                                     <td>{product.id}</td>
                                     <td>{product.name}</td>
+                                    <td>{product.category?.name || 'sin categoria'}</td>
                                     <td>
-                                        <button className="btn btn-primary">Editar</button>
+                                        <button className="btn btn-primary" onClick={()=> navigate(`/admin/editar/${product.id}`)}>Editar</button>
                                         <button className="btn btn-danger" onClick={() => handleDelete(product.id)}>Eliminar</button>
                                     </td>
                                 </tr>

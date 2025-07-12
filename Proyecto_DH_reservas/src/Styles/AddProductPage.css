@@ -11,6 +11,20 @@
     
 
 }
+.formulario select{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    margin-bottom: 1rem;
+    &:focus{
+        outline: none;
+        border-color: blue;
+        box-shadow: 0 0 5px rgba(0, 0, 255, 0.2);
+    }
+}
 .AddProductForm{
     position: relative;
 }
@@ -23,7 +37,7 @@
     color: #1d4c7e;
 }
 
-input[type="text"],
+.formulario input[type="text"],
 input[type="file"]
 {
     width: 100%;
@@ -41,6 +55,7 @@ input:focus{
     color: red;
     margin-top: 10px;
     font-weight: bold;
+    font-size: 15px;
 }
 .btn-guardar {
     background-color: #1d4c7e;
@@ -95,4 +110,17 @@ label {
     color: #1d4c7e;
     font-family: Montserrat;
     margin-bottom: 5px;
+}
+.select-category{
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.option-select{
+    cursor: pointer;
+    border-radius: 8px;
+    & :hover{
+        background-color: gray;
+
+    }
 }

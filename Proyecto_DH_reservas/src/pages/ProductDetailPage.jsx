@@ -1,16 +1,23 @@
 import { useNavigate, useParams } from "react-router-dom";
 import '../Styles/ProductDetailPage.css';
-import { useContext } from "react";
-import { ProductContext } from "../Context/ProductContext";
+import { useEffect } from "react";
+import { useFetch } from "../Hoocks/UseFetch";
+import { getFaIconComponent } from "../Utils/getFaIcon";
 
 
 export const ProductDetailPage = () => {
 
     const navigate = useNavigate();
     const { id } = useParams()
+    const url = `http://localhost:8080/product/${id}`
 
-    const { randomProducts, isLoading, error } = useContext(ProductContext)
-    const product = randomProducts.find((product) => product.id === parseInt(id))
+    const { data: product, isLoading, error, fetchData: fetchProduct } = useFetch();
+    useEffect(() => {
+        fetchProduct(url, 'GET')
+    }, [])
+
+
+
 
 
 
@@ -22,9 +29,9 @@ export const ProductDetailPage = () => {
                     product ? (
                         <div key={product.id} className="Product-card">
 
-                            <header className="product-header">
+                            <header className="product-header1">
                                 <h1
-                                    className="product-title"
+                                    className="product-title1"
                                 >
                                     {product.name}
                                 </h1>
@@ -63,13 +70,32 @@ export const ProductDetailPage = () => {
                                     ))}
                                 </div>
 
+                                <div className="container-characteristic">
+
+                                    <h2>Que Ofrecemos</h2>
+
+                                    <ul className="product-characteristcs">
+                                        {product.characteristics?.map(char => {
+                                            const Icon = getFaIconComponent(char.icon);
+                                            return (
+                                                <li key={char.id} className="list-charactreristics">
+                                                    <i>{Icon ? <Icon size={20} color="green" /> : 'sin icono'}</i>
+                                                    <span>{char.name}</span>
+                                                </li>
+                                            );
+                                        })}
+
+                                    </ul>
+                                </div>
+
                             </div>
-                            :
+
 
                         </div>
 
+
                     )
-                    : <h4>Producto no encontrado</h4>
+                        : <h4>Producto no encontrado</h4>
             }
         </div>
     )

@@ -10,10 +10,20 @@ import java.util.Optional;
 
 public interface IProductService {
     Product saveProduct(Product product);
+
     List<ProductDto> getRandomProduct();
+
     Page<ProductDto> getProductsPaginated(int page, int size);
+
     void delete(long id) throws ResourceNotFoundException;
-    Optional<Product> findById(Long id);
-    List <ProductDto> getAll();
+
+    Optional<ProductDto> findById(Long id) throws ResourceNotFoundException;
+
+    List<ProductDto> getAll();
+
+    ProductDto updateCategory(Long productId, Long categoryId);
+
+    List<Product> findByCategoryId(Long categoryId);
+
 
 }
