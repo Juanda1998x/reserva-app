@@ -1,15 +1,14 @@
-import { useContext, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import '../Styles/ProductsRandom.css';
 import { NavLink } from "react-router-dom";
 import { ProductContext } from "../Context/ProductContext";
-
-
-
-
+import { FavoriteButton } from "./FavoriteButton";
+import { ShareProduct } from "./ShareProduct";
+import { RatingProduct } from "./RatingProduct";
 
 export const ProductsRandom = () => {
 
-    const {randomProducts, isLoading,error} = useContext(ProductContext)
+    const { randomProducts, isLoading, error } = useContext(ProductContext)
     const [showModal, setShowModal] = useState(false);
     const [selectedImage, setSelectedImage] = useState([]);
 
@@ -23,6 +22,9 @@ export const ProductsRandom = () => {
         setSelectedImage([]);
     }
 
+    useEffect(() => { }, [randomProducts,]);
+
+
     return (
         <div className="grid-container">
             {isLoading ? <h4>cargando...</h4>
@@ -30,6 +32,12 @@ export const ProductsRandom = () => {
                     :
                     randomProducts.map((product) => (
                         <div key={product.id} className="Product-card">
+
+                            <div className="product-actions">
+                                <ShareProduct product={product} />
+                                <FavoriteButton productId={product.id} token={localStorage.getItem('token')} />
+                                <RatingProduct average={product.averageRating} count={product.reviewCount} size={20} />
+                            </div>
 
                             <div className="gallery">
                                 <div className="main-image">
@@ -44,10 +52,10 @@ export const ProductsRandom = () => {
                                     ))}
                                 </div>
                                 <button className="ver-mas" onClick={() => handleOpenModal(product.images || [])} >Ver más </button>
-                                
+
                             </div>
-                            <div className="product-info"> 
-                                
+                            <div className="product-information">
+
                                 <h3>{product.name}</h3>
                                 <p>{product.description}</p>
                                 <NavLink to={`/ProductDetail/${product.id}`} className="nav-link" aria-current="page" >Detalles</NavLink>

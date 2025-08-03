@@ -1,0 +1,56 @@
+.reservation-success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+
+}
+
+.success-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.success-card h2 {
+  font-size: 28px;
+  color: #2ecc71;
+  margin-bottom: 15px;
+}
+
+.success-card p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 25px;
+}
+
+.return-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.return-button:hover {
+  background-color: #27ae60;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

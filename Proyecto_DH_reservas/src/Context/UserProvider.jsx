@@ -1,34 +1,53 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { UserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom';
 
-export const UserProvider = ({children}) => {
-    const navigate = useNavigate();
-    const [user, setUser] = useState(() => {
-        const savedUser = localStorage.getItem('user');
-        
-        return savedUser ? JSON.parse(savedUser) : null;
-    });
+export const UserProvider = ({ children }) => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem('user');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
-    // funcion para actualizar el usuario y guardarlo en localStorage
-    const login = (userData) => {
-        setUser(userData);
-        localStorage.setItem('user', JSON.stringify(userData));
-        localStorage.setItem('token', userData.token); // Guardar el token si es necesario
-    };
+  const parseJwt = (token) => {
+    try {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+      );
+      return JSON.parse(jsonPayload);
+    } catch (error) {
+      return null;
+    }
+  };
 
-    // funcion para cerrar sesion y eliminar el usuario de localStorage
-    const logout = () => {
-        setUser(null);
-        localStorage.removeItem('user');
-        localStorage.removeItem('token'); // Eliminar el token si es necesario
-        navigate('/');
-    };
+  const login = (userData) => {
+    const payload = parseJwt(userData.token);
+    const role = payload?.role || null;
+
+    const userWithRole = { ...userData, role };
+
+    setUser(userWithRole);
+    localStorage.setItem('user', JSON.stringify(userWithRole));
+    localStorage.setItem('token', userData.token);
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    navigate('/');
+  };
+
   return (
     <UserContext.Provider value={{ user, login, logout }}>
       {children}
     </UserContext.Provider>
-  )
-}
+  );
+};
 
 

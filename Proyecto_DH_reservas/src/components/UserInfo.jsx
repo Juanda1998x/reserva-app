@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { UserContext } from '../Context/UserContext';
 import '../styles/UserInfo.css';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const UserInfo = () => {
 
@@ -36,7 +36,7 @@ export const UserInfo = () => {
 
     const initialsLetters = `${user.name[0] || ''}${user.lastName[0] || ''}`.toUpperCase();
     return (
-        <div className="user-info" ref={menuRef}>
+        <div className="user-infor" ref={menuRef}>
             <div
                 className="user-avatar"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -47,6 +47,19 @@ export const UserInfo = () => {
                 <div className="user-menu">
                     <span>{`${user.name} ${user.lastName}`}</span>
                     <ul className="navlist">
+                        <li>
+                            <NavLink
+                                to={'/Favorites-products'}>
+                                Favoritos
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to={'/my-bookings'}>
+                                Mis reservas
+                            </NavLink>
+                        </li>
+                        
                         <li><a onClick={handleLogout} >Cerrar sesión</a></li>
                         
                     </ul>

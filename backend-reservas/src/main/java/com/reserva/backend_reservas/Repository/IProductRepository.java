@@ -16,4 +16,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
     @Query(value = "SELECT * FROM product ORDER BY RAND() LIMIT 10", nativeQuery = true)
     List<Product> getRandomProducts();
     List<Product> findByCategoryId(Long categoryId);
+
+    List<Product> findByNameContainingIgnoreCaseOrCityContainingIgnoreCase(String name, String city);
+
 }

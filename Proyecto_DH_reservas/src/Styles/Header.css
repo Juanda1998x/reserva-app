@@ -1,3 +1,4 @@
+
 .header{
 
     top: 0;
@@ -12,112 +13,116 @@
     padding: 10px 30px;
     z-index: 1000;
     margin-bottom: 15px;
-    margin: 8px 2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-bottom: 1px solid #003b73;
 }
 
-.header-left{
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.header-left img {
+  width: 70px;
+}
+
+
+.hamburguer {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburguer .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #003b73;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburguer.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+.hamburguer.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburguer.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* DERECHA */
+.header-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  transition: max-height 0.3s ease;
+}
+
+/* BOTONES */
+.btn {
+  background-color: #003b73;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #00509e;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hamburguer {
     display: flex;
-    align-items: end;
-}
+  }
 
-.header-left span{
-    font-size: 1rem;
-    font-weight: 500;
-    color: #1d4c7e;
-    font-family: Montserrat;
-    font-size: 20px;
-}
-
-.header-right{
-    display: flex;
-    gap: 10px;
-    margin-right: 20px;
-}
-.header .btn {
-    padding: 10px 30px;
-    font-family: 'Montserrat', sans-serif;
-    color: #ffffff;
-     font-size: clamp(14px, 2vw, 18px);
-    cursor: pointer;
-    border-radius: 8px;
-    background-color: #1d4c7e;
-    border: none;
-    transition: all 0.3s ease;
-
-    &:hover {
-        background-color: #145a8a;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-}
-
-
-img{
-    height: 60px;
-    width: 70px;
-    margin-right: 8px;
-}
-.hamburguer{
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    border: none;
-    z-index: 1001;
-}
-.hamburguer span{
+  .header-right {
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
-    height: 3px;
-    background-color: #1d4c7e;
-    transition: all 0.3s ease;
-}
-@media (max-width:768px){
-    .hamburguer {
-        display: flex;
-    }
-    .header-right button{
-        display: none;
-    }
-    .header-right{
-        
-        position: fixed;
-        top: 100%;
-        right: -100%;
-        width: 40%;
-        height: 250px;
-        background-color: #ffffffe4;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        margin-right: 0;
-        transition: right 0.3s ease;
-        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        
-    }
-    .header-right.open {
-        top : 70px;
-        right: 10px;
-        
-    }
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+    z-index: 999;
+  }
 
-    /* esto es para que paresca una x el boton hamburguesa cuando esta activo  */
+  .header-right.open {
+    max-height: 600px;
+    padding: 1rem 0;
+  }
 
-    .hamburguer.open span:nth-child(1) {
-        transform: rotate(45deg) translate(5px , 5px);
-    }
-    .hamburguer.open span:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburguer.open span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-   
+  .nav-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+  }
 
+  .btn {
+    width: 90%;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .info {
+    margin-top: 10px;
+  }
 }

@@ -3,6 +3,7 @@ import { NavLink } from "react-router"
 import React, { use, useContext, useState } from 'react';
 import { UserInfo } from './UserInfo';
 import { UserContext } from '../Context/UserContext';
+import { div } from 'framer-motion/client';
 export const Header = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +14,7 @@ export const Header = () => {
     return (
 
         <header className="header">
+
             <div className="header-left">
 
                 <a href="/" className="logo">
@@ -25,12 +27,15 @@ export const Header = () => {
             </div>
 
             <button className={`hamburguer ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+
                 <span className="bar"></span>
                 <span className="bar"></span>
                 <span className="bar"></span>
+
             </button>
 
-            <div className={`header-right${isMenuOpen ? 'open' : ''}`}>
+            <div className={`header-right${isMenuOpen ? ' open' : ''}`}>
+
                 <NavLink
                     to={'/auth/register'}
                     className="nav-link "
@@ -51,23 +56,26 @@ export const Header = () => {
                         Iniciar sesión
                     </button>
                 </NavLink>
-                {user && <NavLink
-                    to={'/admin'}
-                    className="nav-link "
-                    aria-current="page"
-                    onClick={() => setIsMenuOpen(false)}>
-                    <button
-                        className='btn'>
-                        panel administrador
-                    </button>
+                {user?.role === 'ROLE_ADMIN' &&
+                    <NavLink
+                        to={'/admin'}
+                        className="nav-link "
+                        aria-current="page"
+                        onClick={() => setIsMenuOpen(false)}>
+                        <button
+                            className='btn'>
+                            panel administrador
+                        </button>
 
-                </NavLink>
-                }
-               {user &&
-                    <UserInfo />
+                    </NavLink>
                 }
 
             </div>
+            {user &&
+                <div className=" info">
+                    <UserInfo />
+                </div>
+            }
 
         </header>
 

@@ -17,6 +17,11 @@ import { ListUserPage } from "./pages/ListUserPage"
 import { CharacteristicForm } from "./components/CharacteristicForm"
 import { CharacteristicList } from "./pages/CharacteristicList"
 import { AddCategoryPage } from "./pages/AddCategoryPage"
+import { FavoriteList } from "./pages/FavoriteListPage"
+import { ReservationDetailPage } from "./pages/ReservationDetailPage"
+import { ProductReservation } from "./components/ProductReservation"
+import { ReservationSuccess } from "./components/ReservationSuccess"
+import { MyBookings } from "./components/MyBookings"
 
 
 export const AppReservas = () => {
@@ -26,39 +31,44 @@ export const AppReservas = () => {
 
                 <ProductProvider>
                     <UserProvider>
-                
-                    <Routes>
 
-                        <Route element={<MainLayouth />}>
-                            <Route path="/" element={<PaginaPrincipal />} />
-                            <Route path="/ProductDetail/:id" element={<ProductDetailPage />} />
-                        </Route>
+                        <Routes>
 
-                        <Route element={<AuthLayout />}>
+                            <Route element={<MainLayouth />}>
+                                <Route path="/" element={<PaginaPrincipal />} />
+                                <Route path="/ProductDetail/:id" element={<ProductDetailPage />} />
+                                <Route path="/Favorites-products" element={<FavoriteList />} />
+                            </Route>
 
-                            <Route path="/auth/register" element={<CrearCuentaPage />} />
-                            <Route path="/auth/login" element={<LoginPage />} />
+                            <Route element={<AuthLayout />}>
 
-
-                            <Route path="/admin" element={<AdminPage />} />
-                            <Route path="/admin/agregar-producto" element={<AddProductPage />} />
-                            <Route path="/admin/agregar-categoria" element={<AddCategoryPage />} />
-                            <Route path="/admin/ver-productos" element={<ProductList />} />
-                            <Route path="/admin/editar/:id" element={<EditProductPage />} />
-                            <Route path="/admin/ver-usuarios" element={<ListUserPage />} />
-                            <Route path="/admin/crear-caracteristica" element={<CharacteristicForm mode= "create"/>} />
-                            <Route path="/admin/editar-caracteristica/:id" element={<CharacteristicForm mode= "edit"/>} />
-                            <Route path="/admin/listar-caracteristica" element={<CharacteristicList />} />
-
-                        </Route>
+                                <Route path="/auth/register" element={<CrearCuentaPage />} />
+                                <Route path="/auth/login" element={<LoginPage />} />
 
 
-                        <Route path="/*" element={<Navigate to='/' />} />
+                                <Route path="/admin" element={<AdminPage />} />
+                                <Route path="/admin/agregar-producto" element={<AddProductPage />} />
+                                <Route path="/admin/agregar-categoria" element={<AddCategoryPage />} />
+                                <Route path="/admin/ver-productos" element={<ProductList />} />
+                                <Route path="/admin/editar/:id" element={<EditProductPage />} />
+                                <Route path="/admin/ver-usuarios" element={<ListUserPage />} />
+                                <Route path="/admin/crear-caracteristica" element={<CharacteristicForm mode="create" />} />
+                                <Route path="/admin/editar-caracteristica/:id" element={<CharacteristicForm mode="edit" />} />
+                                <Route path="/admin/listar-caracteristica" element={<CharacteristicList />} />
+                                <Route path="/product/:productId/reservation" element={<ProductReservation />} />
+                                <Route path="/product/:productId/reservation/detail" element={<ReservationDetailPage/>} />
+                                <Route path="/reservation/success" element={<ReservationSuccess/>} />
+                                <Route path="/my-bookings" element={<MyBookings/>} />
 
-                    </Routes>
+                            </Route>
+
+
+                            <Route path="/*" element={<Navigate to='/' />} />
+
+                        </Routes>
                     </UserProvider>
                 </ProductProvider>
-                
+
 
             </div >
 

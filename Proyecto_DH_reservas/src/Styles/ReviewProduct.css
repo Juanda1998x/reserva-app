@@ -1,0 +1,72 @@
+/* Contenedor general */
+.review-container {
+    background-color: #fff;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Títulos */
+.review-container h3,
+.review-container h4 {
+    color: #1d4c7e;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+/* Cada reseña */
+.review {
+    border-top: 1px solid #eee;
+    padding: 1rem 0;
+}
+
+
+/* Información del usuario y fecha */
+.review p:first-of-type {
+    font-weight: bold;
+    color: #555;
+    margin: 0.5rem 0;
+}
+
+/* Comentario */
+.review p:last-of-type {
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+/* Área para dejar reseña */
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review-form textarea {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    resize: vertical;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 1rem;
+    min-height: 100px;
+}
+
+.review-form button {
+    align-self: flex-start;
+    padding: 0.6rem 1.2rem;
+    background-color: #ff385c;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.review-form button:hover {
+    background-color: #e03150;
+}

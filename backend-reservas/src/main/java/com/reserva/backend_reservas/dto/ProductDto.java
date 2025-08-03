@@ -19,4 +19,8 @@ public class ProductDto {
     private List<String> images;
     private Category category;
     private List<Characteristics> characteristics;
+    private Double averageRating;
+    private Integer reviewCount;
+    private String whatsappNumber;
 }
+

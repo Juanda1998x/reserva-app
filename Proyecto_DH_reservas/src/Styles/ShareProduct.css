@@ -1,0 +1,89 @@
+
+
+.share-button {
+   background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 10;
+    color: #007aff;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.share-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.share-content {
+  position: relative;
+  background-color: white;
+  padding: 24px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+
+.share-content textarea {
+  width: 100%;
+  height: 60px;
+  padding: 8px;
+  margin-top: 10px;
+  resize: none;
+}
+
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.share-buttons button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  justify-content: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #666;
+}
+
+.icon {
+  font-size: 18px;
+}
+

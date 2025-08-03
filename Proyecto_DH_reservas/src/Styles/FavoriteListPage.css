@@ -1,0 +1,106 @@
+.favoritos-container {
+
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.favoritos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eaeaea;
+   
+}
+
+.favoritos-header h2 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 600;
+}
+
+.favoritos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 2rem;
+}
+
+.favorito-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.favorito-card:hover {
+    transform: scale(1.02);
+}
+
+.favorito-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.favorito-info {
+    padding: 1rem;
+}
+
+.favorito-info h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.favorito-info p {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0.5rem 0 1rem;
+}
+
+.quitar-btn {
+    background-color: #ff5a5f;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quitar-btn:hover {
+    background-color: #e0484c;
+}
+
+.volver-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #222;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #3f77b32a;
+        border-radius: 50%;   
+    }
+    
+}
+
+.favoritos-loading {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 2rem;
+}

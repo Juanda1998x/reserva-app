@@ -1,17 +1,54 @@
-.search {
 
-    width: 80%;
-    max-width: 500px;
-    padding: 12px 20px;
-    display: block;
-    border: 2px solid #ddd;
-    border-radius: 25px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
 }
-.btn-delete-filter{
+
+.product-search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.product-list-search{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.product-card-search {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    padding: 1rem;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+.btn-delete-filter {
     background-color: #dc3545;
     color: white;
     border: none;
@@ -21,20 +58,15 @@
     font-size: 10px;
     transition: background-color 0.3s ease;
     margin-top: 10px;
+
     &:hover {
         background-color: #c82333;
     }
 }
-.search:focus {
-    border-color: #4caf50;
-    box-shadow: 0 2px 5px rgba(76, 175, 80, 0.2);
-}
-.search::placeholder {
-    color: #aaa;
-    font-style: italic;
-}
 
-.container section{
+
+
+.container section {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     background-color: #ffffff;
@@ -47,13 +79,14 @@
     width: 100%;
     flex-direction: column;
     padding: clamp(1rem, 2vw, 2rem);
-    border-radius: 10px; 
-    gap : 20px;
+    border-radius: 10px;
+    gap: 20px;
 }
+
 .container h2 {
     width: 100%;
     text-align: left;
     color: #1d4c7e;
     font-size: clamp(1.5rem, 2vw, 2.3rem);
-    
+
 }

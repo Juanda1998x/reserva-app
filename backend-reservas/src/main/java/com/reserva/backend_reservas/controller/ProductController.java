@@ -14,6 +14,7 @@ import com.reserva.backend_reservas.service.IProductService;
 import com.reserva.backend_reservas.service.IcategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +22,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -107,6 +106,21 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/suggestions")
+    public ResponseEntity<List<String>> getSuggestions(@RequestParam String query) {
+        return ResponseEntity.ok(productService.getSuggestions(query));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> search(
+            @RequestParam(required = false) String query,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate
+    ) {
+        return ResponseEntity.ok(productService.searchProducts(query, startDate, endDate));
+    }
+
+
     @GetMapping("/random")
     public ResponseEntity<List<ProductDto>> getRandomProducts(){
         List<ProductDto> randomProduts = productService.getRandomProduct();
@@ -127,10 +141,11 @@ public class ProductController {
         return ResponseEntity.ok(result);
     }
     @GetMapping("/category/{categoryId}")
-    public  ResponseEntity<List<Product>> findByCategoryId(@PathVariable Long categoryId){
-        List<Product> product = productService.findByCategoryId(categoryId);
-        return ResponseEntity.ok(product);
+    public ResponseEntity<List<ProductDto>> findByCategoryId(@PathVariable Long categoryId) {
+        List<ProductDto> dtoList = productService.findByCategoryIdDto(categoryId);
+        return ResponseEntity.ok(dtoList);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<ProductDto> findById(@PathVariable Long id) throws ResourceNotFoundException {
         Optional<ProductDto> dto = productService.findById(id);

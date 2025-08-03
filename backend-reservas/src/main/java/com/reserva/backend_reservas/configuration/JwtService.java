@@ -1,7 +1,6 @@
 package com.reserva.backend_reservas.configuration;
 
 import io.jsonwebtoken.Claims;
-import org.springframework.beans.factory.annotation.Value;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;

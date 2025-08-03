@@ -14,11 +14,18 @@ INSERT INTO CATEGORY (name, image_url) VALUES
 
 
 INSERT INTO usuario (name, last_name, email, password, age, conditions, role)
-VALUES('Admin','Admin','admin.example@gmail.com','$2a$12$Gchg6sUEd3K3tAB/cNA0SeYI8SuFlDdfpR8GPOJ8Ot5flQZtum6bi',19,true,'ADMIN');
+VALUES
+('Admin','Admin','admin.example@gmail.com','$2a$12$Gchg6sUEd3K3tAB/cNA0SeYI8SuFlDdfpR8GPOJ8Ot5flQZtum6bi',19,true,'ADMIN'),
+('Juan','Molano','juandmb98.jdm@gmail.com','$2a$12$Gchg6sUEd3K3tAB/cNA0SeYI8SuFlDdfpR8GPOJ8Ot5flQZtum6bi',19,true,'USER');
 
-INSERT INTO product (id, name, description, category_id) VALUES
-(1, 'Hotel Plaza', 'Hotel moderno con todas las comodidades', 1),
-(2, 'Hostel Backpackers', 'Ideal para mochileros', 2),
-(3, 'Depto Palermo', 'Departamento acogedor en el centro', 3),
-(4, 'Hotel Boutique Zen', 'Diseño y tranquilidad en un solo lugar', 1),
-(5, 'Hostel Joven', 'Ambiente juvenil y desayuno incluido', 2);
+
+INSERT INTO product (name, description, category_id, city) VALUES
+('Hotel Plaza', 'Hotel moderno con todas las comodidades', 1, 'Bogota'),
+('Hostel Backpackers', 'Ideal para mochileros', 2, 'Cartagena'),
+('Depto Palermo', 'Departamento acogedor en el centro', 3, 'Bogota'),
+('Hotel Boutique Zen', 'Diseño y tranquilidad en un solo lugar', 1, 'Santa Marta'),
+('Hostel Joven', 'Ambiente juvenil y desayuno incluido', 2, 'Santa Marta');
+
+
+
+

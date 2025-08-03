@@ -1,0 +1,20 @@
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: Arial, sans-serif;
+}
+
+.star-icon {
+  color: #fbbf24; 
+}
+
+.star-icon.empty {
+  color: #e5e7eb; 
+}
+
+.rating-text {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: #4b5563; 
+}

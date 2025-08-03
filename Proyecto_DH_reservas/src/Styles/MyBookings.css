@@ -1,0 +1,22 @@
+.my-bookings-container {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.booking-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  background-color: #fff;
+  transition: transform 0.2s;
+}
+
+.booking-card:hover {
+  transform: scale(1.01);
+}
+
+.booking-card p {
+  margin: 0.5rem 0;
+}

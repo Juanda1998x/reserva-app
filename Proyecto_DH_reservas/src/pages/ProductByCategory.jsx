@@ -5,12 +5,12 @@ import '../styles/ProductByCategory.css';
 
 export const ProductByCategory = ({ categoryId }) => {
 
-  const { data, isLoading, error, fetchData } = useFetch();
+  const { data, isLoading, error, fetchData: fetchProductCategory } = useFetch();
   const url = `http://localhost:8080/product/category/${categoryId}`;
 
   useEffect(() => {
     if (!categoryId) return;
-    fetchData(url, 'GET');
+    fetchProductCategory(url, 'GET');
   }, [categoryId]);
 
   if (isLoading) {
@@ -27,9 +27,10 @@ export const ProductByCategory = ({ categoryId }) => {
       {data?.map((product) => (
         <div key={product.id} className="product-card">
           <h3>{product.name}</h3>
-          {product.images && product.images.length > 0 && (
-            <img src={product.images[0]} alt={product.name} />
-          )}
+          {/*
+          {product.imagenes && product.imagenes.length > 0 && (
+            <img src={product.imagenes[0]} alt={product.name} />
+          )} */}
           <p>{product.description}</p>
           <p>Precio: ${product.price}</p>
         </div>

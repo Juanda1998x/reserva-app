@@ -13,5 +13,6 @@ public interface IcategoryService {
     List<CategoryDto> getAll();
     Category createCategory(Category category);
     Optional<CategoryDto> findById(Long id)throws ResourceNotFoundException;
+    void deleteCategory(Long id);
 
 }

@@ -5,6 +5,7 @@ import com.reserva.backend_reservas.entity.Product;
 import com.reserva.backend_reservas.exception.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,5 +26,10 @@ public interface IProductService {
 
     List<Product> findByCategoryId(Long categoryId);
 
+
+    List<String> getSuggestions(String query);
+
+    List<Product> searchProducts(String query, LocalDateTime startDate, LocalDateTime endDate);
+    List<ProductDto> findByCategoryIdDto(Long categoryId);
 
 }

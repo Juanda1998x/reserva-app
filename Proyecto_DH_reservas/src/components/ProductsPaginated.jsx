@@ -2,7 +2,9 @@ import { useContext, useState } from "react"
 import '../Styles/ProductsRandom.css';
 import { ProductContext } from "../Context/ProductContext";
 import { NavLink } from "react-router-dom";
-import { Pagination } from "./Pagination";
+import { ShareProduct } from "./ShareProduct";
+import { FavoriteButton } from "./FavoriteButton";
+import { RatingProduct } from "./RatingProduct";
 
 export const ProductsPaginated = () => {
 
@@ -36,6 +38,12 @@ export const ProductsPaginated = () => {
                     paginatedProducts.map((product) => (
                         <div key={product.id} className="Product-card">
 
+                            <div className="product-actions">
+                                <ShareProduct product={product} />
+                                <FavoriteButton productId={product.id} token={localStorage.getItem('token')} />
+                                <RatingProduct average={product.averageRating} count={product.reviewCount} size={20} />
+                            </div>
+
                             <div className="gallery">
                                 <div className="main-image">
                                     {product.images && product.images.length > 0 && (
@@ -51,11 +59,11 @@ export const ProductsPaginated = () => {
                                 <button className="ver-mas" onClick={() => handleOpenModal(product.images || [])} >Ver más </button>
 
                             </div>
-                            <div className="product-info">
+                            <div className="product-information">
 
                                 <h3>{product.name}</h3>
                                 <p>{product.description}</p>
-                                <NavLink to={`/ProductDetail/${product.id}`} className="nav-link " aria-current="page" >Detalles</NavLink>
+                                <NavLink to={`/ProductDetail/${product.id}`} className="nav-link" aria-current="page" >Detalles</NavLink>
                             </div>
 
                         </div>
@@ -72,7 +80,7 @@ export const ProductsPaginated = () => {
                     </div>
                 </div>
             )}
-            
+
         </div>
 
     )

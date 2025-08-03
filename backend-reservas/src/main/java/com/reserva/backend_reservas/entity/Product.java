@@ -19,6 +19,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Product {
 
+    public Product(long id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -40,5 +44,17 @@ public class Product {
     inverseJoinColumns = @JoinColumn(name = "characteristics_id"))
     @JsonIgnoreProperties("product")
     private List<Characteristics> characteristics = new ArrayList<>();
+
+    private String city;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Review> reviews;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Booking> bookings = new ArrayList<>();
+
+    private String whatsappNumber;
+
+
 
 }

@@ -78,7 +78,7 @@ export const CrearCuentaPage = () => {
         conditions: false
       });
 
-      navigate('/login'); // Redirigir al usuario a la página de inicio de sesión después del registro exitoso
+      navigate('/auth/login'); // Redirigir al usuario a la página de inicio de sesión después del registro exitoso
       alert('Formulario enviado correctamente');
     }
   };
