@@ -27,10 +27,10 @@ export const ProductByCategory = ({ categoryId }) => {
       {data?.map((product) => (
         <div key={product.id} className="product-card">
           <h3>{product.name}</h3>
-          {/*
-          {product.imagenes && product.imagenes.length > 0 && (
-            <img src={product.imagenes[0]} alt={product.name} />
-          )} */}
+          
+          {product.images && product.images.length > 0 && (
+            <img src={product.images[0]} alt={product.name} />
+          )} 
           <p>{product.description}</p>
           <p>Precio: ${product.price}</p>
         </div>

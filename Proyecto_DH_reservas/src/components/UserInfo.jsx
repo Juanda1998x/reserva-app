@@ -25,16 +25,16 @@ export const UserInfo = () => {
     const handleLogout = () => {
         logout();
         setIsMenuOpen(false);
-        navigate('/'); // Redirigir a la página principal después de cerrar sesión
+        navigate('/');
     }
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const { user, logout } = useContext(UserContext);
 
-    if (!user) return null;
+    if (!user || !user.name || !user.lastName) return null;
 
-    const initialsLetters = `${user.name[0] || ''}${user.lastName[0] || ''}`.toUpperCase();
+    const initialsLetters = `${user?.name?.[0] || ''}${user?.lastName?.[0] || ''}`.toUpperCase();
     return (
         <div className="user-infor" ref={menuRef}>
             <div
@@ -45,7 +45,7 @@ export const UserInfo = () => {
             </div>
             {isMenuOpen && (
                 <div className="user-menu">
-                    <span>{`${user.name} ${user.lastName}`}</span>
+                    <span>{`${user?.name} ${user?.lastName}`}</span>
                     <ul className="navlist">
                         <li>
                             <NavLink
@@ -59,9 +59,9 @@ export const UserInfo = () => {
                                 Mis reservas
                             </NavLink>
                         </li>
-                        
+
                         <li><a onClick={handleLogout} >Cerrar sesión</a></li>
-                        
+
                     </ul>
                 </div>
             )}

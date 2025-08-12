@@ -42,6 +42,7 @@ public class ProductController {
             @RequestParam("description") String description,
             @RequestParam("categoryId") Long categoryId,
             @RequestPart("images") List<MultipartFile> images,
+            @RequestParam("city") String city,
             @RequestPart("characteristics" ) String characteristicsJson) throws ResourceNotFoundException{
         try {
 
@@ -63,7 +64,7 @@ public class ProductController {
             product.setDescription(description);
             product.setCategory(category);
             product.setCharacteristics(characteristic);
-
+            product.setCity(city);
 
             List<Imagen> imagenes = new ArrayList<>();
 
@@ -112,7 +113,7 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<Product>> search(
+    public ResponseEntity<List<ProductDto>> search(
             @RequestParam(required = false) String query,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate
@@ -123,8 +124,8 @@ public class ProductController {
 
     @GetMapping("/random")
     public ResponseEntity<List<ProductDto>> getRandomProducts(){
-        List<ProductDto> randomProduts = productService.getRandomProduct();
-        return ResponseEntity.ok(randomProduts);
+        List<ProductDto> randomProducts = productService.getRandomProduct();
+        return ResponseEntity.ok(randomProducts);
     }
 
     @GetMapping("/paginated")

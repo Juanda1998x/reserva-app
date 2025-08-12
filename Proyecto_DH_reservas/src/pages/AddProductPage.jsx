@@ -40,7 +40,8 @@ export const AddProductPage = () => {
     name: '',
     description: '',
     categoryId: '',
-    characteristics: []
+    characteristics: [],
+    city: ''
 
   });
 
@@ -71,6 +72,8 @@ export const AddProductPage = () => {
     formData.append('description', form.description); // agrega la descripcion del producto al objeto FormData
     formData.append('categoryId', selectedCategory); // agrega la categoria seleccionada al objeto FormData
     formData.append('characteristics', JSON.stringify(form.characteristics));
+    formData.append('city', form.city);
+
     // agrega las imagenes seleccionadas al objeto FormData
     Imagenes.forEach((img) => {
       formData.append('images', img);
@@ -166,6 +169,8 @@ export const AddProductPage = () => {
             }}
             required
           />
+          <label>Ciudad:</label>
+          <input type="text" name="city" value={form.city} onChange={handleChange} required minLength={3} autoComplete='off' />
 
           <label>Imagenes:</label>
           <input type="file" multiple onChange={handleFileChange} required />

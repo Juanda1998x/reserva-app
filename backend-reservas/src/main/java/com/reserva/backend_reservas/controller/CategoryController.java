@@ -18,7 +18,7 @@ public class CategoryController {
     @Autowired
     IcategoryService categoryService;
 
-    @GetMapping("get")
+    @GetMapping("/get")
     public ResponseEntity<List<CategoryDto>> getall(){
 
         List<CategoryDto> dto = categoryService.getAll();

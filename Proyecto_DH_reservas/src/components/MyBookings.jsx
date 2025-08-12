@@ -7,6 +7,7 @@ export const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
+    if (!user) return;
     fetch("http://localhost:8080/bookings/my-bookings", {
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -15,7 +16,7 @@ export const MyBookings = () => {
       .then(res => res.json())
       .then(data => setBookings(data))
       .catch(err => console.error("Error al obtener reservas:", err));
-  }, []);
+  }, [user]);
 
   return (
     <div className="my-bookings-container">
@@ -23,7 +24,7 @@ export const MyBookings = () => {
       {bookings.length === 0 ? (
         <p>No tienes reservas aún.</p>
       ) : (
-        bookings.map((booking) => (
+        bookings?.map((booking) => (
           <div key={booking.id} className="booking-card">
             <p><strong>Producto:</strong> {booking.product.name}</p>
             <p><strong>Desde:</strong> {booking.startDate}</p>

@@ -67,7 +67,10 @@ public class ProductService implements IProductService{
             } else {
                 dto.setReviewCount(0);
                 dto.setAverageRating(0.0);
+
             }
+            dto.setCity(product.getCity());
+            dto.setPrice(product.getPrice());
             return dto;
         }).collect(Collectors.toList());
     }
@@ -102,6 +105,8 @@ public class ProductService implements IProductService{
               dto.setReviewCount(0);
               dto.setAverageRating(0.0);
           }
+          dto.setCity(product.getCity());
+          dto.setPrice(product.getPrice());
 
           dto.setImages(imagenesBase64);
           return dto;
@@ -151,7 +156,10 @@ public class ProductService implements IProductService{
         } else {
             respuestaDto.setReviewCount(0);
             respuestaDto.setAverageRating(0.0);
+
         }
+        respuestaDto.setCity(p.getCity());
+        respuestaDto.setPrice(p.getPrice());
 
         dto = Optional.of(respuestaDto);
         return dto;
@@ -189,7 +197,10 @@ public class ProductService implements IProductService{
             } else {
                 dto.setReviewCount(0);
                 dto.setAverageRating(0.0);
+
             }
+            dto.setPrice(product.getPrice());
+            dto.setCity(product.getCity());
             return dto;
         }).collect(Collectors.toList());
     }
@@ -263,7 +274,7 @@ public class ProductService implements IProductService{
 
 
     @Override
-    public List<Product> searchProducts(String query, LocalDateTime startDate, LocalDateTime endDate) {
+    public List<ProductDto> searchProducts(String query, LocalDateTime startDate, LocalDateTime endDate) {
         List<Product> products;
 
         if (query != null && !query.isEmpty()) {
@@ -273,15 +284,51 @@ public class ProductService implements IProductService{
             products = productRepository.findAll();
         }
 
-        // Si hay fechas, filtrar productos disponibles
+        // Filtrar por fechas si están presentes
         if (startDate != null && endDate != null) {
             products = products.stream()
                     .filter(p -> isProductAvailable(p, startDate.toLocalDate(), endDate.toLocalDate()))
                     .toList();
         }
 
-        return products;
+        // Mapear a DTO
+        return products.stream().map(product -> {
+            ProductDto dto = new ProductDto();
+            dto.setId(product.getId());
+            dto.setName(product.getName());
+            dto.setDescription(product.getDescription());
+            dto.setCategory(product.getCategory());
+            dto.setCharacteristics(product.getCharacteristics());
+            dto.setWhatsappNumber(product.getWhatsappNumber());
+            dto.setCity(product.getCity());
+
+            // Convertir imágenes a base64
+            List<String> imagenesBase64 = product.getImagenes().stream()
+                    .map(img -> "data:" + img.getTipo() + ";base64," +
+                            Base64.getEncoder().encodeToString(img.getDatos()))
+                    .toList();
+            dto.setImages(imagenesBase64);
+
+            // Calcular reseñas
+            if (product.getReviews() != null && !product.getReviews().isEmpty()) {
+                int reviewCount = product.getReviews().size();
+                double averageRating = product.getReviews().stream()
+                        .mapToInt(r -> r.getRating())
+                        .average()
+                        .orElse(0.0);
+                dto.setReviewCount(reviewCount);
+                dto.setAverageRating(averageRating);
+            } else {
+                dto.setReviewCount(0);
+                dto.setAverageRating(0.0);
+            }
+            dto.setPrice(product.getPrice());
+            dto.setCity(product.getCity());
+
+            return dto;
+        }).toList();
     }
+
 
     @Override
     public List<ProductDto> findByCategoryIdDto(Long categoryId) {

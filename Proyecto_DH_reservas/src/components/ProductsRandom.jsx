@@ -56,8 +56,12 @@ export const ProductsRandom = () => {
                             </div>
                             <div className="product-information">
 
-                                <h3>{product.name}</h3>
+                                <h3>
+                                    {product.name}
+                                    <span className="product-city">({product.city})</span>
+                                </h3>
                                 <p>{product.description}</p>
+                                <p className="product-price">$ {product.price} COP por noche</p>
                                 <NavLink to={`/ProductDetail/${product.id}`} className="nav-link" aria-current="page" >Detalles</NavLink>
                             </div>
 

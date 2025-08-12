@@ -66,6 +66,10 @@ export const ProductDetailPage = () => {
                                     className="product-title1"
                                 >
                                     {product.name}
+                                    <div>
+                                        {`(${product.city})`}
+                                    </div>
+
                                 </h1>
 
                                 <button
@@ -128,6 +132,11 @@ export const ProductDetailPage = () => {
 
                                 <div>
                                     <ProductReservation productId={product.id} />
+                                    <p className="product-price">
+                                        Precio por noche: ${product.price}
+
+                                    </p>
+
                                 </div>
                                 <div>
                                     <ReviewProduct productId={product.id} token={localStorage.getItem('token')} />
@@ -142,7 +151,7 @@ export const ProductDetailPage = () => {
                         </div>
 
                     )
-                : <h4>Producto no encontrado</h4>
+                        : <h4>Producto no encontrado</h4>
             }
         </div>
     )

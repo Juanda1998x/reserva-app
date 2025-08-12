@@ -69,7 +69,9 @@ public class FavoriteService implements IFavoriteService {
                             product.getCharacteristics(),
                             averageRating,
                             reviewCount,
-                            product.getWhatsappNumber()
+                            product.getWhatsappNumber(),
+                            product.getCity(),
+                            product.getPrice()
                     );
                 })
                 .collect(Collectors.toList());

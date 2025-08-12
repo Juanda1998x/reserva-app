@@ -22,5 +22,7 @@ public class ProductDto {
     private Double averageRating;
     private Integer reviewCount;
     private String whatsappNumber;
+    private String city;
+    private Double price;
 }
 

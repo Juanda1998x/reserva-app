@@ -29,7 +29,7 @@ public interface IProductService {
 
     List<String> getSuggestions(String query);
 
-    List<Product> searchProducts(String query, LocalDateTime startDate, LocalDateTime endDate);
+    List<ProductDto> searchProducts(String query, LocalDateTime startDate, LocalDateTime endDate);
     List<ProductDto> findByCategoryIdDto(Long categoryId);
 
 }

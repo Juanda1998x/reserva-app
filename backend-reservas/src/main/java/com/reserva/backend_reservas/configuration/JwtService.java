@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +18,16 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private final String SECRET_KEY =
-            "FuFsDvAAPQ4Npmoa6uBegD9adxsDBwYaEqOa7r5SbHfcLjopoHVjsfn9n051L3JAdVshUPwGDmETOAmsyIewh1RAM7AgkfbvxrIw";
+    @Value("${jwt.secret.key}")
+    private String secretKey;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
     public String generateToken(UserDetails userDetails) {
-
-        Map<String,Object> claims = new HashMap<>();
-        claims.put("role",userDetails.getAuthorities().iterator().next().getAuthority());
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", userDetails.getAuthorities().iterator().next().getAuthority());
         return generateToken(claims, userDetails);
     }
 
@@ -35,7 +35,7 @@ public class JwtService {
             Map<String, Object> extractClaims,
             UserDetails userDetails
     ) {
-        extractClaims.put("role",userDetails.getAuthorities().iterator().next().getAuthority());
+        extractClaims.put("role", userDetails.getAuthorities().iterator().next().getAuthority());
         return Jwts
                 .builder()
                 .setClaims(extractClaims)
@@ -74,8 +74,7 @@ public class JwtService {
     }
 
     private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-
 }

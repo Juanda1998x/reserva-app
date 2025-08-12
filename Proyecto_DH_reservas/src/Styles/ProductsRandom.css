@@ -38,6 +38,10 @@ image {
     color: #414141;
     margin: 10px 0;
 }
+.product-information h3{
+    display: flex;
+    gap: 1rem;
+}
 .product-information  .nav-link{
     width: 30%;
     background-color: #3f78b3;

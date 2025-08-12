@@ -1,14 +1,25 @@
 import { use, useEffect, useState } from 'react'
 import { useFetch } from '../Hoocks/UseFetch';
-import { FaWifi, FaSwimmer, FaCoffee } from 'react-icons/fa';
 import '../styles/CharacteristicForm.css';
 import Select from 'react-select';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { FaWifi, FaSwimmer, FaCoffee, FaParking, FaUtensils, FaDumbbell, FaConciergeBell, FaTv, FaSnowflake, FaDog, FaShuttleVan, FaSpa, FaCocktail } from 'react-icons/fa';
+
 const iconOptions = [
-    { label: 'Wifi', value: 'wifi', icon: <FaWifi /> },
-    { label: 'Piscina', value: 'swimmer', icon: <FaSwimmer /> },
-    { label: 'Cafe', value: 'coffee', icon: <FaCoffee /> }
+  { label: 'Wifi', value: 'wifi', icon: <FaWifi /> },
+  { label: 'Piscina', value: 'pool', icon: <FaSwimmer /> },
+  { label: 'Café', value: 'coffee', icon: <FaCoffee /> },
+  { label: 'Estacionamiento', value: 'parking', icon: <FaParking /> },
+  { label: 'Restaurante', value: 'restaurant', icon: <FaUtensils /> },
+  { label: 'Gimnasio', value: 'gym', icon: <FaDumbbell /> },
+  { label: 'Recepción 24h', value: 'reception', icon: <FaConciergeBell /> },
+  { label: 'Televisión', value: 'tv', icon: <FaTv /> },
+  { label: 'Aire acondicionado', value: 'air-conditioning', icon: <FaSnowflake /> },
+  { label: 'Pet Friendly', value: 'pet-friendly', icon: <FaDog /> },
+  { label: 'Transporte al aeropuerto', value: 'airport-shuttle', icon: <FaShuttleVan /> },
+  { label: 'Spa', value: 'spa', icon: <FaSpa /> },
+  { label: 'Bar', value: 'bar', icon: <FaCocktail /> }
 ];
 
 

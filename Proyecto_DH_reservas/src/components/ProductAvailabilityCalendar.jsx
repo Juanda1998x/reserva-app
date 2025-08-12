@@ -15,7 +15,10 @@ export const ProductAvailabilityCalendar = ({ productId }) => {
         const res = await fetch(`http://localhost:8080/bookings/product/${productId}`);
         if (!res.ok) throw new Error("No se pudo obtener disponibilidad");
         const data = await res.json();
-        const parsedDates = data.map((d) => new Date(d));
+        const parsedDates = (data.map((d) => {
+          const [year, month, day] = d.split("-");
+          return new Date(year, month - 1, day);
+        }));
         setBookedDates(parsedDates);
       } catch (err) {
         setError(true);

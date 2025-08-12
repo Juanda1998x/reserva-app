@@ -55,6 +55,7 @@ public class Product {
 
     private String whatsappNumber;
 
+    private Double price;
 
 
 }

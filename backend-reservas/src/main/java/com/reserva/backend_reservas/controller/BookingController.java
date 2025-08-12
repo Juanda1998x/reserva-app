@@ -19,16 +19,16 @@ import java.util.List;
     @RequestMapping("/bookings")
     public class BookingController {
 
-        private final BookingService bookingService;
+    private final BookingService bookingService;
 
-        public BookingController(BookingService bookingService) {
+    public BookingController(BookingService bookingService) {
             this.bookingService = bookingService;
-        }
+    }
 
-        @GetMapping("/product/{productId}")
-        public ResponseEntity<List<LocalDate>> getBookedDates(@PathVariable Long productId) {
-            return ResponseEntity.ok(bookingService.getBookedDatesByProductId(productId));
-        }
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<List<LocalDate>> getBookedDates(@PathVariable Long productId) {
+        return ResponseEntity.ok(bookingService.getBookedDatesByProductId(productId));
+    }
 
     @PostMapping
     public ResponseEntity<?> createBooking(

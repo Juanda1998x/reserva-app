@@ -24,8 +24,12 @@ export const ProductReservation = ({ productId }) => {
     fetch(`http://localhost:8080/bookings/product/${productId}`)
       .then((res) => res.json())
       .then((data) => {
-        setBookedDates(data.map((d) => new Date(d)));
+        setBookedDates(data.map((d) => {
+          const [year, month, day] = d.split("-");
+          return new Date(year, month - 1, day);
+        }));
       })
+
       .catch(() => {
         setError("No se pudo cargar la disponibilidad. Intenta más tarde.");
       });

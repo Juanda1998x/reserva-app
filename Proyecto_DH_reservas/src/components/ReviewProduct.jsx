@@ -48,7 +48,7 @@ export const ReviewProduct = ({ productId, token }) => {
                 <button onClick={handleSubmitReview}>Enviar</button>
             </div>
             <h3>Reseñas de clientes</h3>
-            {reviews.map((r, i) => (
+            {reviews?.map((r, i) => (
                 <div key={i} className="review">
                     <StarRating rating={r.rating} />
                     <p>

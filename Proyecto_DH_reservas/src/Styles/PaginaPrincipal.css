@@ -25,7 +25,8 @@
 }
 .product-list-search{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    height: 800px;
     gap: 1.5rem;
     padding: 2rem;
     background-color: #f9f9f9;
@@ -35,6 +36,8 @@
 .product-card-search {
     background-color: white;
     border-radius: 10px;
+    width: 100%;
+    height: 100%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s ease;
@@ -46,6 +49,12 @@
     &:hover {
         transform: scale(1.03);
     }
+}
+.product-card-search img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .btn-delete-filter {

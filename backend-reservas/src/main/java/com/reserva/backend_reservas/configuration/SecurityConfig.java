@@ -3,6 +3,7 @@ package com.reserva.backend_reservas.configuration;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,11 +35,44 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .headers((headers)->headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register","/auth/login", "/product/**").permitAll()
-                        .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/category/**","/user/**").authenticated()
-                        .requestMatchers("/characteristics/all").permitAll()
-                        .anyRequest().permitAll()
+                        .requestMatchers("/auth/register",
+                                "/auth/login",
+                                "/category/get",
+                                "/product/all",
+                                "/product/category/{categoryId}",
+                                "/product/suggestions",
+                                "/product/{id}",
+                                "/product/search",
+                                "/product/random",
+                                "/product/paginated",
+                                "/bookings/**",
+                                "/characteristics/all",
+                                "/reviews/{productId}")
+                        .permitAll()
+
+                        .requestMatchers(
+                                "/h2-console/**")
+                        .permitAll()
+
+                        .requestMatchers(
+
+                                "/favorites/**")
+                        .authenticated()
+
+                        .requestMatchers(HttpMethod.POST,"/reviews/{productId}").authenticated()
+
+                        .requestMatchers(
+                                "/category/create",
+                                "/delete/{id}",
+                                "/characteristics/delete/{id}",
+                                "/characteristics/create",
+                                "/characteristics/update/{id}",
+                                "/product/create",
+                                "/product/{id}/category",
+                                "/user/**")
+                        .hasRole("ADMIN")
+
+                        .anyRequest().authenticated()
 
 
                 )
